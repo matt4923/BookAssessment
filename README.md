@@ -74,3 +74,30 @@ A single table was added with the following columns/Types.  Since it is test dat
 - PublicationYear (int, not null)
 - Url (varchar(100), not null)
 ## Multiple Items, One Call
+1.	On the db server, create a type like the destination table
+    
+    `CREATE TYPE DestinationType AS Table
+     (ColA int,
+      ColB int,
+      ColC int)`
+    
+3.	On the db server, create a stored procedure that accepts a _DestinationType_ parameter:
+
+    `CREATE PROC Insert_into_Dest_Table(@dataTable DestinationType)
+    AS
+    INSERT INTO DestinationTable (ColumnA, ColumnB, ColumnC)
+    SELECT ColA, ColB, ColC FROM @dataTable
+    GO`
+
+2.	On the web server, convert the list to be saved to a DataTable type that matches the schema of the destination db table. 
+3.	On the web server, create make a call to the database server where CommandText is the Stored Procedure execution.  Also add the DataTable (step 2) as a parameter:
+
+    `Using(var conn = new SqlConnection(connString)){
+        Using(SqlCommand cmd = conn.CreateCommand()){
+            Cmd.CommandText = “EXEC Insert_into_Dest_Table”;
+            Conn.Open();
+            Cmd.Parameters.AddWithValue(“@dataTable”, destinationDataTable);
+            Cmd.ExecuteNonQuery();
+        }
+    }`
+
