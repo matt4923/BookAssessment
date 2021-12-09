@@ -1,5 +1,5 @@
 # Matt W Assessment Project
-Book management API.  
+Book Assessment API for Cascade  
 .net core 3.1, C#, SQL 
 
 ## Notes
