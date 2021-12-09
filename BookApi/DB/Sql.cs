@@ -10,7 +10,8 @@
                                                 $"[AuthorFirstName] [varchar](20) NOT NULL," +
                                                 $"[Price] [decimal](4, 2) NOT NULL," +
                                                 $"[PublicationYear] [int] NOT NULL," +
-                                                $"[Url] [varchar](100) NOT NULL) " +
+                                                $"[Url] [varchar](100) NOT NULL," +
+                                                $"CONSTRAINT [PK_Book] PRIMARY KEY CLUSTERED ([ID] ASC)) " +
                                                 $"on [PRIMARY]";
 
         public static string InsertBook => $"INSERT INTO {Constant.BOOKTABLENAME} (ID, Publisher, Title, AuthorLastName, AuthorFirstName, Price, PublicationYear, Url)" +
