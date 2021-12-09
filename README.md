@@ -10,7 +10,9 @@ The default ConnectionString in the **appsettings.json** file is:
     "CascadeBooks": "Server=(localdb)\\mssqllocaldb;Database=CascadeBook;Trusted_Connection=True;"
   }`
   
-  This can be modified to any server/data source as long as the appropriate credentials are also specified.  **Please do not change the database name**
+  This can be modified to any server/data source as long as the appropriate credentials are also specified and the user has full SQL privledges, (create db, tables, stored procedures, insert data, query tables, etc)
+  
+**Please do not change the database name in the connection string**
 ## Testing
 Ensure project is running in VS and the browser routes to:
 
@@ -22,6 +24,7 @@ This is your indication the database has been created, schema has been added, st
 ![image](https://user-images.githubusercontent.com/35410250/145463924-5f1027e5-8108-4930-89af-edb471e2a7c1.png)
 
 ### API Endpoints
+* https://localhost:44344/book - API Entry point - (the port may be different depending on how it's running, in these instructions, it's running through IIS Express)
 * https://localhost:44344/book/sort1 - Returns sorted JSON list by Publisher, Author (last, first), then title
 * https://localhost:44344/book/sort2 - Returns sorted JSON list by Author (last, first), then title
 * https://localhost:44344/book/sort3 - Returns sorted JSON list in same format as sort1 but retrieved through Stored Procedure
@@ -30,7 +33,7 @@ This is your indication the database has been created, schema has been added, st
 
 
 ## Instructions and Responses
-
+If my interpretation of the instructions is incorrect, I'm happy to modify as needed.
 
 1.  ##### Create a REST API using ASP.NET MVC and write a method to return a sorted list of these by Publisher, Author (last, first), then title.**
     - 
