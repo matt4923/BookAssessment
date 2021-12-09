@@ -2,7 +2,8 @@
 Book Assessment API for Cascade  
 .net core 3.1, C#, SQL 
 
-## Notes
+If my interpretation of any instructions are incorrect, I'm happy to modify as needed.
+
 If running this project through VS, it should automatically create the database, modify schema and insert test data.  
 The default ConnectionString in the **appsettings.json** file is:
 
@@ -13,6 +14,7 @@ The default ConnectionString in the **appsettings.json** file is:
   This can be modified to any server/data source as long as the appropriate credentials are also specified and the user has full SQL privledges, (create db, tables, stored procedures, insert data, query tables, etc)
   
 **Please do not change the database name in the connection string**
+
 ## Testing
 Ensure project is running in VS and the browser routes to:
 
@@ -26,6 +28,9 @@ In SSMS you can see the database
 
 ![image](https://user-images.githubusercontent.com/35410250/145463924-5f1027e5-8108-4930-89af-edb471e2a7c1.png)
 
+#### Note
+All of the schema, stored procedures and test data will be added only if the database does NOT exist.  If there are problems running this, the database must be deleted.  If you'd like, I could make this more robust and check for the creation of individual items even if the db exists.
+
 ### API Endpoints
 * https://localhost:44344/book - API Entry point - (the port may be different depending on how it's running, in these instructions, it's running through IIS Express)
 * https://localhost:44344/book/sort1 - Returns sorted JSON list by Publisher, Author (last, first), then title
@@ -36,7 +41,6 @@ In SSMS you can see the database
 
 
 ## Instructions and Responses
-If my interpretation of the instructions is incorrect, I'm happy to modify as needed.
 
 1.  ##### Create a REST API using ASP.NET MVC and write a method to return a sorted list of these by Publisher, Author (last, first), then title.**
     - See https://localhost:44344/book/sort1 for sorted json data.
