@@ -16,8 +16,8 @@ This allows a user to return a sorted list through a single endpoint (httpGet). 
 * /book/newsort/4 => Returns sorted JSON list in same format as 2 but retrieved through Stored Procedure
 
 ### CRUD Operations
-This assessment now allows for CRUD operations, (performed through Entity Framework).  In order to test these operations, please use postman or a similar API testing application.
-    Create: 
+This assessment now allows for CRUD operations, (performed through Entity Framework).  In order to test these operations, please use postman or a similar API testing application.  For the web request body, you can use the following JSON template:
+    `
     {
 "Publisher":"pub1",
 "Title":"title1",
@@ -27,6 +27,9 @@ This assessment now allows for CRUD operations, (performed through Entity Framew
 "PublicationYear":"1995",
 "Url":"www.amazon.com"
 }
+    `
+* Add new book - 
+ 
     
 # Previous Instructions
 If my interpretation of any instructions are incorrect, I'm happy to modify as needed.
