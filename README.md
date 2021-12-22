@@ -1,7 +1,34 @@
 # Matt W Assessment Project
 Book Assessment API for Cascade  
-.net core 3.1, C#, SQL 
+.net 6, C#, SQL 
 
+# Update 12/22/2021
+* Implemented NewSortController.  All sorting methods funnel through a single endpoint.  The query string variable indicates the sort method to be applied.
+* Entity framework implemented for db creation and CRUD operations
+* Crud operations on book endpoint
+
+## Testing new update
+### new api endpoint: `/book/newsort/<sortInt>`
+This allows a user to return a sorted list through a single endpoint (httpGet).  Specify the type of sort desired in the <sortInt> query string.
+* /book/newsort/1 => Returns sorted JSON list by Publisher, Author (last, first), then title (same as Sort1 below)
+* /book/newsort/2 => Returns sorted JSON list by Author (last, first), then title (same as Sort2 below)
+* /book/newsort/3 => Returns sorted JSON list in same format as 1 but retrieved through Stored Procedure
+* /book/newsort/4 => Returns sorted JSON list in same format as 2 but retrieved through Stored Procedure
+
+### CRUD Operations
+This assessment now allows for CRUD operations, (performed through Entity Framework).  In order to test these operations, please use postman or a similar API testing application.
+    Create: 
+    {
+"Publisher":"pub1",
+"Title":"title1",
+"AuthorLastName":"LastName1",
+"AuthorFirstName":"FirstName1",
+"Price":"19.95",
+"PublicationYear":"1995",
+"Url":"www.amazon.com"
+}
+    
+# Previous Instructions
 If my interpretation of any instructions are incorrect, I'm happy to modify as needed.
 
 If running this project through VS, it should automatically create the database, modify schema and insert test data.  
