@@ -15,9 +15,13 @@ namespace BookApi.DB {
                 //db doesn't exist, create it and add all demo schema and data
                 CreateDb(tempConnString);
                 CreateBookTableAndSampleData(fullConnString);
-                CreateStoredProcedure(fullConnString, Sql.CreateProcSortByAuth);
-                CreateStoredProcedure(fullConnString, Sql.CreateProcSortByPub);
+                AddStoredProcedures(fullConnString);
             }//else -> TO DO: should make more robust to verify individual tables/stored procedures exist even if the DB exists.  I can do this upon request.
+        }
+
+        public static void AddStoredProcedures(string fullConnString) {
+            CreateStoredProcedure(fullConnString, Sql.CreateProcSortByAuth);
+            CreateStoredProcedure(fullConnString, Sql.CreateProcSortByPub);
         }
 
         private static void CreateBookTableAndSampleData(string fullConnString) {

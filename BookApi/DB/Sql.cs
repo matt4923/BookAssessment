@@ -19,15 +19,13 @@
 
 
         //sort books by Publisher, Author (last, first), then title
-        internal static string SortByPub => "SELECT * FROM BOOK " +
-                                            "ORDER BY Publisher, AuthorLastName, AuthorFirstName, title";
+        internal static string SortByPub => "SELECT * FROM BOOK ORDER BY Publisher, AuthorLastName, AuthorFirstName, title";
 
         //Author (last, first) then title
-        internal static string SortByAuth => "SELECT * FROM BOOK " +
-                                             "ORDER BY AuthorLastName, AuthorFirstName, title";
+        internal static string SortByAuth => "SELECT * FROM BOOK ORDER BY AuthorLastName, AuthorFirstName, title";
 
-        internal static string CreateProcSortByPub => $"CREATE PROC Sort_Books_by_Publisher as {SortByPub}";
-        internal static string CreateProcSortByAuth => $"CREATE PROC Sort_Books_by_Author as {SortByAuth}";
+        internal static string CreateProcSortByPub => $"IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('dbo.Sort_Books_by_Publisher')) exec('CREATE PROC Sort_Books_by_Publisher as {SortByPub}')";
+        internal static string CreateProcSortByAuth => $"IF NOT EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND OBJECT_ID = OBJECT_ID('dbo.Sort_Books_by_Author')) exec('CREATE PROC Sort_Books_by_Author as {SortByAuth}')";
         public static string ExecuteProcedureSortByPub => "exec Sort_Books_by_Publisher";
         public static string ExecuteProcedureSortByAuth => "exec Sort_Books_by_Author";
 
