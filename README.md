@@ -5,15 +5,15 @@ Book Assessment API for Cascade
 # Update 12/22/2021
 * Implemented NewSortController.  All sorting methods funnel through a single endpoint.  The query string variable indicates the sort method to be applied.
 * Entity framework implemented for db creation and CRUD operations
-* Crud operations on book endpoint
+* Crud operations on books
 
 ## Testing new update
 ### new api endpoint: `/book/newsort/<sortInt>`
 This allows a user to return a sorted list through a single endpoint (httpGet).  Specify the type of sort desired in the <sortInt> query string.
-* /book/newsort/1 => Returns sorted JSON list by Publisher, Author (last, first), then title (same as Sort1 below)
-* /book/newsort/2 => Returns sorted JSON list by Author (last, first), then title (same as Sort2 below)
-* /book/newsort/3 => Returns sorted JSON list in same format as 1 but retrieved through Stored Procedure
-* /book/newsort/4 => Returns sorted JSON list in same format as 2 but retrieved through Stored Procedure
+* .../book/newsort/1 => Returns sorted JSON list by Publisher, Author (last, first), then title (same as Sort1 below)
+* .../book/newsort/2 => Returns sorted JSON list by Author (last, first), then title (same as Sort2 below)
+* .../book/newsort/3 => Returns sorted JSON list in same format as 1 but retrieved through Stored Procedure
+* .../book/newsort/4 => Returns sorted JSON list in same format as 2 but retrieved through Stored Procedure
 
 ### CRUD Operations
 This assessment now allows for CRUD operations, (performed through Entity Framework).  In order to test these operations, please use postman or a similar API testing application.  For the web request body, you can use the following JSON template:
@@ -28,7 +28,9 @@ This assessment now allows for CRUD operations, (performed through Entity Framew
 "Url":"www.amazon.com"
 }
     `
-* Add new book - 
+* Add new book (HttpPost ~ .../book/) -> Edit the above JSON to denote the properties of the new book.  Send the JSON object in the body of the web request through Postman.
+* Update book (HttpPut ~ .../book/\<bookTitle\>) -> Edit the above JSON to denote the updated properties of the book.  Also, indicate the <bookTitle> (title of book you'd like to update) in the url route.  Send the updated JSON object in the body of the web request through Postman.
+* Delete book (HttpDelete ~ .../book/\<bookTitle\>) -> Indicate the <bookTitle> (title of book you'd like to update) in the url route.  Send the updated JSON object in the body of the web request through Postman.
  
     
 # Previous Instructions
